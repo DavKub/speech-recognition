@@ -3,8 +3,8 @@ import webbrowser
 import time
 import random
 import os
-from gtts import gTTS
 import playsound
+from gtts import gTTS
 
 r = sr.Recognizer()
 
@@ -39,7 +39,7 @@ def respond(voice_data):
         alexis_speak("My name is Friday")
 
     if "what time is it" in voice_data:
-        alexis_speak(time.ctime())
+        print(time.ctime())
 
     if 'search' in voice_data:
         search = record_audio("What do you want to search for?")
@@ -53,6 +53,7 @@ def respond(voice_data):
         webbrowser.get().open(url)
         alexis_speak("Here is what I found on " + location)
     if 'exit' in voice_data:
+        alexis_speak("Goodbye for now.")
         exit()
 
 
@@ -61,3 +62,4 @@ alexis_speak("How can I help you?")
 while 1:
     voice_data = record_audio()
     respond(voice_data)
+    print(voice_data)
